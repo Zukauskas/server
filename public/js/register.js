@@ -1,9 +1,13 @@
+const formDOM = document.querySelector('form');
 const usernameDOM = document.getElementById('username');
 const emailDOM = document.getElementById('email');
 const passDOM = document.getElementById('pass');
 const repassDOM = document.getElementById('repass');
 const tosDOM = document.getElementById('tos');
 const submitDOM = document.querySelector('form button');
+
+const errorsDOM = document.createElement('div');
+formDOM.appendChild(errorsDOM);
 
 const is = {
     string: (str) => typeof str === 'string' && str.trim() !== '',
@@ -26,35 +30,56 @@ if (submitDOM) {
     function submitForm(e) {
         e.preventDefault();
 
+        const usernameNotValid = document.createElement('div');
+        const emailNotValid = document.createElement('div');
+        const passNotValid = document.createElement('div');
+        const repassNotValid = document.createElement('div');
+        const tosNotChecked = document.createElement('div');
+        const samePassNotValid = document.createElement('div');
+
+        errorsDOM.innerHTML = '';
+
         const usernameValid = is.username(usernameDOM.value);
         const emailValid = is.email(emailDOM.value);
         const passValid = is.pass(passDOM.value);
         const repassValid = is.pass(repassDOM.value);
 
         if (!usernameValid) {
-            console.log('username is invalid');
+            usernameNotValid.classList.add('error');
+            usernameNotValid.innerText = 'Username is invalid';
+            errorsDOM.appendChild(usernameNotValid);
         }
 
         if (!emailValid) {
-            console.log('email is invalid');
+            emailNotValid.classList.add('error');
+            emailNotValid.innerText = 'Email is invalid';
+            errorsDOM.appendChild(emailNotValid);
         }
 
         if (!passValid) {
-            console.log('Password is invalid');
+            passNotValid.classList.add('error');
+            passNotValid.innerText = 'Password is invalid';
+            errorsDOM.appendChild(passNotValid);
         }
 
         if (!repassValid) {
-            console.log('Repeated password is invalid');
+            repassNotValid.classList.add('error');
+            repassNotValid.innerText = 'Repeated password is invalid';
+            errorsDOM.appendChild(repassNotValid);
         }
 
         if (!tosDOM.checked) {
-            console.log('TOS not checked');
+            tosNotChecked.classList.add('error');
+            tosNotChecked.innerText = 'TOS not checked';
+            errorsDOM.appendChild(tosNotChecked);
         }
 
         const samePass = passDOM.value === repassDOM.value;
 
         if (!samePass) {
-            console.log('Password and repeated password does not match');
+            samePassNotValid.classList.add('error');
+            samePassNotValid.innerText = 'Passwords are not the same';
+            errorsDOM.appendChild(samePassNotValid);
         }
 
         if (

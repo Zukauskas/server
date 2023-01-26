@@ -33,3 +33,15 @@
     background-color: #00ad09;
     cursor: pointer;
 }
+
+.form > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    line-height: 1em;
+}
