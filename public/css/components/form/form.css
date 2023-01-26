@@ -1,0 +1,35 @@
+.form {
+    display: grid;
+    gap: 20px;
+    max-width: 450px;
+}
+
+.form > .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.form > .form-row > label {
+    font-size: 16px;
+    line-height: 1em;
+    align-self: center;
+}
+
+.form > .form-row > input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 1em;
+}
+
+.form > .form-row > button {
+    grid-column: 1 / -1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 1em;
+    background-color: #00ad09;
+    cursor: pointer;
+}
