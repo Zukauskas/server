@@ -90,6 +90,20 @@ if (submitDOM) {
             tosDOM.checked
         ) {
             console.log('Everything is A-OK!');
+
+            const data = {
+                username: usernameDOM.value,
+                email: emailDOM.value,
+                password: passDOM.value,
+            };
+
+            fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
         }
     }
 
